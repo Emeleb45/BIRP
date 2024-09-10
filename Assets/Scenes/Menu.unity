@@ -675,6 +675,7 @@ MonoBehaviour:
   fadePanel: {fileID: 1567716809}
   fadeDuration: 1
   initialDelay: 1
+  menuSceneIndex: 2
 --- !u!1 &967482392
 GameObject:
   m_ObjectHideFlags: 0

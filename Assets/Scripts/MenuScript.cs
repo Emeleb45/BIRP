@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
     public Image fadePanel; // Reference to the Image component of the black panel
     public float fadeDuration = 1f; // Duration for the fade out effect
     public float initialDelay = 1f; // Delay before starting the fade effect
-
+    public int menuSceneIndex = 1; 
     void Start()
     {
         if (fadePanel != null)
@@ -41,6 +41,6 @@ public class MenuScript : MonoBehaviour
 
     public void PlayGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("None"); // Replace "None" with the scene name or index
+        SceneManager.LoadScene(menuSceneIndex);
     }
 }
