@@ -6,45 +6,46 @@ namespace Cainos.PixelArtTopDown_Basic
 {
     public class TopDownCharacterController : MonoBehaviour
     {
-        public float speed;
+        public float speed;  // Speed of the character's movement
 
-        private Animator animator;
+        private Animator animator; // Reference to the Animator component
+        private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
 
         private void Start()
         {
             animator = GetComponent<Animator>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
-
 
         private void Update()
         {
-            Vector2 dir = Vector2.zero;
-            if (Input.GetKey(KeyCode.A))
+            // Get input values for movement
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+
+            // Set the direction parameters for the blend tree
+            animator.SetFloat("Horizontal", horizontal);
+            animator.SetFloat("Vertical", vertical);
+
+            // Calculate movement direction and speed
+            Vector2 direction = new Vector2(horizontal, vertical).normalized;
+            float currentSpeed = direction.magnitude * speed;
+
+            // Set the Speed parameter to control idle and walking animations
+            animator.SetFloat("Speed", currentSpeed);
+
+            // Flip the sprite based on the horizontal input to handle left/right movement
+            if (horizontal > 0)
             {
-                dir.x = -1;
-                animator.SetInteger("Direction", 3);
+                spriteRenderer.flipX = false;  // Facing right
             }
-            else if (Input.GetKey(KeyCode.D))
+            else if (horizontal < 0)
             {
-                dir.x = 1;
-                animator.SetInteger("Direction", 2);
+                spriteRenderer.flipX = true;   // Facing left
             }
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                dir.y = 1;
-                animator.SetInteger("Direction", 1);
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                dir.y = -1;
-                animator.SetInteger("Direction", 0);
-            }
-
-            dir.Normalize();
-            animator.SetBool("IsMoving", dir.magnitude > 0);
-
-            GetComponent<Rigidbody2D>().velocity = speed * dir;
+            // Move the character using Rigidbody2D
+            GetComponent<Rigidbody2D>().velocity = direction * speed;
         }
     }
 }
