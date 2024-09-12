@@ -34,18 +34,36 @@ namespace Cainos.PixelArtTopDown_Basic
             // Set the Speed parameter to control idle and walking animations
             animator.SetFloat("Speed", currentSpeed);
 
-            // Flip the sprite based on the horizontal input to handle left/right movement
-            if (horizontal > 0)
-            {
-                spriteRenderer.flipX = false;  // Facing right
-            }
-            else if (horizontal < 0)
-            {
-                spriteRenderer.flipX = true;   // Facing left
-            }
+
 
             // Move the character using Rigidbody2D
             GetComponent<Rigidbody2D>().velocity = direction * speed;
+            if (horizontal > 0)
+            {
+                setDirection("R");
+            }
+            else if (horizontal < 0)
+            {
+                setDirection("L");
+            }
+            if (vertical > 0)
+            {
+                setDirection("B");
+            }
+            else if (vertical < 0)
+            {
+                setDirection("F");
+            }
+
+        }
+        void setDirection(string direction)
+        {
+            animator.SetBool("R", false);
+            animator.SetBool("L", false);
+            animator.SetBool("B", false);
+            animator.SetBool("F", false);
+
+            animator.SetBool(direction, true);
         }
     }
 }

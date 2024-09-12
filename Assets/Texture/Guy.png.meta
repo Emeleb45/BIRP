@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Guy_F_Idle
+      name: Guy_B_Idle
       rect:
         serializedVersion: 2
         x: 1
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_F_Walk1
+      name: Guy_B_Walk1
       rect:
         serializedVersion: 2
         x: 321
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_F_Walk2
+      name: Guy_B_Walk2
       rect:
         serializedVersion: 2
         x: 640
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_F_Walk3
+      name: Guy_B_Walk3
       rect:
         serializedVersion: 2
         x: 960
@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_F_Walk4
+      name: Guy_B_Walk4
       rect:
         serializedVersion: 2
         x: 1280
@@ -215,7 +215,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_B_Idle
+      name: Guy_R_Idle
       rect:
         serializedVersion: 2
         x: 0
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_B_Walk1
+      name: Guy_R_Walk1
       rect:
         serializedVersion: 2
         x: 320
@@ -257,7 +257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_B_Walk2
+      name: Guy_R_Walk2
       rect:
         serializedVersion: 2
         x: 640
@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_B_Walk3
+      name: Guy_R_Walk3
       rect:
         serializedVersion: 2
         x: 960
@@ -299,7 +299,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_B_Walk4
+      name: Guy_R_Walk4
       rect:
         serializedVersion: 2
         x: 1280
@@ -341,7 +341,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_S_Walk1
+      name: Guy_L_Walk1
       rect:
         serializedVersion: 2
         x: 320
@@ -362,11 +362,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_S_Idle
+      name: Guy_L_Idle
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 318
         width: 160
         height: 320
       alignment: 9
@@ -383,7 +383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_S_Walk2
+      name: Guy_L_Walk2
       rect:
         serializedVersion: 2
         x: 640
@@ -404,7 +404,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_S_Walk3
+      name: Guy_L_Walk3
       rect:
         serializedVersion: 2
         x: 960
@@ -425,7 +425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_S_Walk4
+      name: Guy_L_Walk4
       rect:
         serializedVersion: 2
         x: 1280
@@ -445,6 +445,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Guy_F_Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1760
+        width: 160
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d6ab7536addb4e4589bc8240f33fc6f
+      internalID: 2044538182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guy_F_Walk1
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 1760
+        width: 160
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a785db3eff04510418450d8fbb36139d
+      internalID: -2045759245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guy_F_Walk2
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 1760
+        width: 160
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95856fd66a98cdd4ca4b748d2c65eb3c
+      internalID: -2090070483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guy_F_Walk3
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 1760
+        width: 160
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c88653eb15c1644abb50af4de6c9c89
+      internalID: -1089987262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guy_F_Walk4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1760
+        width: 160
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4142c1e94f0cc884da2ba8e07d8935d3
+      internalID: 1860054798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -456,24 +561,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Guy_0: 2044538182
-      Guy_4: 1860054798
-      Guy_B_Idle: 683987660
-      Guy_B_Walk1: 965426616
-      Guy_B_Walk2: -420580892
-      Guy_B_Walk3: -2120873852
-      Guy_B_Walk4: 1377997931
-      Guy_F_Idle: -1329707760
-      Guy_F_Walk1: 797878679
-      Guy_F_Walk2: -1053211734
-      Guy_F_Walk3: -235906869
-      Guy_F_Walk4: -206006424
-      Guy_S_Idle: -1541785504
-      Guy_S_Walk1: 939111422
-      Guy_S_Walk2: -1918085363
-      Guy_S_Walk3: -986138217
-      Guy_S_Walk4: 1552550331
+      Guy_B_Idle: -1329707760
+      Guy_B_Walk1: 797878679
+      Guy_B_Walk2: -1053211734
+      Guy_B_Walk3: -235906869
+      Guy_B_Walk4: -206006424
+      Guy_F_Idle: 2044538182
+      Guy_F_Walk1: -2045759245
+      Guy_F_Walk2: -2090070483
+      Guy_F_Walk3: -1089987262
+      Guy_F_Walk4: 1860054798
+      Guy_L_Idle: -1541785504
+      Guy_L_Walk1: 939111422
+      Guy_L_Walk2: -1918085363
+      Guy_L_Walk3: -986138217
+      Guy_L_Walk4: 1552550331
+      Guy_R_Idle: 683987660
+      Guy_R_Walk1: 965426616
+      Guy_R_Walk2: -420580892
+      Guy_R_Walk3: -2120873852
+      Guy_R_Walk4: 1377997931
       Guy_Shadow: -1033080668
+      Mid: 2044538182
       Middle: 797878679
       mid: -1917227609
   mipmapLimitGroupName: 

@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Guy
     originalName: 
-    pivot: {x: 0.5034965, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 143
-      height: 160
+      width: 144
+      height: 208
     spriteID: 629dfb7952cb02c44821f4973fcbc848
     spriteBone: []
     spriteOutline: []
@@ -155,8 +155,8 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 0
-        width: 143
-        height: 160
+        width: 144
+        height: 208
       spriteId: 629dfb7952cb02c44821f4973fcbc848
     linkedCells: []
     parentIndex: -1
@@ -164,4 +164,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 144, y: 160}
+  canvasSize: {x: 144, y: 208}
