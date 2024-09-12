@@ -21,7 +21,6 @@ public class SplashScreen : MonoBehaviour
             return;
         }
 
-      
         SetAlpha(0);
         StartCoroutine(FadeRoutine());
     }
@@ -31,19 +30,14 @@ public class SplashScreen : MonoBehaviour
      
         yield return new WaitForSeconds(initialDelay);
 
-        // Fade in
         yield return FadeIn();
 
-      
         yield return new WaitForSeconds(displayTime);
 
-    
         yield return FadeOut();
 
-  
         yield return new WaitForSeconds(finalDelay);
 
-   
         SceneManager.LoadScene(menuSceneIndex);
     }
 
