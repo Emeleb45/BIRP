@@ -91,8 +91,8 @@ namespace Cainos.PixelArtTopDown_Basic
             if (comboIndex == 0 || (comboIndex > 0 && comboTimer > 0))
             {
                 comboTimer = comboTimeWindow;
-                animator.SetTrigger(comboTriggers[comboIndex]);
                 isAttacking = true;
+                animator.SetTrigger(comboTriggers[comboIndex]);
                 comboIndex++;
 
                 if (comboIndex >= comboTriggers.Length)
@@ -142,18 +142,18 @@ namespace Cainos.PixelArtTopDown_Basic
                 // Check if the collider is on the same layer and is not the parent entity
                 if (health != null && LayerMask.LayerToName(collider.gameObject.layer) == LayerMask.LayerToName(gameObject.layer))
                 {
-                    // Ensure the collider's parent is not the same as the script's parent
+
                     if (collider.transform.root != parentEntity.transform)
                     {
-                        // Apply damage
-                        health.TakeDamage(10); // Example damage value
+
+                        health.TakeDamage(10); 
                     }
                 }
             }
         }
         private void SetAttackSize(Vector2 size)
         {
-            // Ensure FrontAttackTransform has a BoxCollider2D to represent the attack size
+
             var collider = FrontAttackTransform.GetComponent<BoxCollider2D>();
             if (collider == null)
             {
