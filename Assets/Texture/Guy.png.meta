@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Guy_0
+      name: GUY_F_Idle
       rect:
         serializedVersion: 2
         x: 0
@@ -118,7 +118,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_1
+      name: Guy_F_Walk1
       rect:
         serializedVersion: 2
         x: 320
@@ -139,7 +139,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_2
+      name: Guy_F_Walk2
       rect:
         serializedVersion: 2
         x: 640
@@ -160,7 +160,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_3
+      name: Guy_F_Walk3
       rect:
         serializedVersion: 2
         x: 960
@@ -181,7 +181,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_4
+      name: Guy_F_Walk4
       rect:
         serializedVersion: 2
         x: 1280
@@ -202,7 +202,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,7 +215,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_5
+      name: GUY_B_Idle
       rect:
         serializedVersion: 2
         x: 0
@@ -223,7 +223,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_6
+      name: Guy_B_Walk1
       rect:
         serializedVersion: 2
         x: 320
@@ -244,7 +244,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,7 +257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_7
+      name: Guy_B_Walk2
       rect:
         serializedVersion: 2
         x: 640
@@ -265,7 +265,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_8
+      name: Guy_B_Walk3
       rect:
         serializedVersion: 2
         x: 960
@@ -286,7 +286,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -299,7 +299,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_9
+      name: Guy_B_Walk4
       rect:
         serializedVersion: 2
         x: 1280
@@ -307,7 +307,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -320,15 +320,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_10
+      name: GUY_R_Idle
       rect:
         serializedVersion: 2
         x: 0
-        y: 4320
+        y: 4318
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -341,7 +341,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_11
+      name: Guy_R_Walk1
       rect:
         serializedVersion: 2
         x: 320
@@ -349,7 +349,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -362,15 +362,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_12
+      name: Guy_R_Walk2
       rect:
         serializedVersion: 2
         x: 640
-        y: 4320
+        y: 4322
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -383,7 +383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_13
+      name: Guy_R_Walk3
       rect:
         serializedVersion: 2
         x: 960
@@ -391,7 +391,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -404,7 +404,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_14
+      name: Guy_R_Walk4
       rect:
         serializedVersion: 2
         x: 1280
@@ -412,7 +412,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -425,7 +425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_15
+      name: GUY_L_Idle
       rect:
         serializedVersion: 2
         x: 0
@@ -433,7 +433,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -446,7 +446,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_16
+      name: Guy_L_Walk1
       rect:
         serializedVersion: 2
         x: 320
@@ -454,7 +454,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -467,7 +467,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_17
+      name: Guy_L_Walk2
       rect:
         serializedVersion: 2
         x: 640
@@ -475,7 +475,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -488,7 +488,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_18
+      name: Guy_L_Walk3
       rect:
         serializedVersion: 2
         x: 960
@@ -496,7 +496,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -509,7 +509,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_19
+      name: Guy_L_Walk4
       rect:
         serializedVersion: 2
         x: 1280
@@ -517,7 +517,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -530,7 +530,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_20
+      name: Guy_Shadow
       rect:
         serializedVersion: 2
         x: 0
@@ -538,7 +538,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -551,7 +551,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_21
+      name: Guy_L_Punch1
       rect:
         serializedVersion: 2
         x: 320
@@ -559,7 +559,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -572,7 +572,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_22
+      name: Guy_R_Punch1
       rect:
         serializedVersion: 2
         x: 640
@@ -580,7 +580,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -593,7 +593,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_23
+      name: Guy_B_Punch1
       rect:
         serializedVersion: 2
         x: 960
@@ -601,7 +601,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -614,7 +614,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_24
+      name: Guy_F_Punch1
       rect:
         serializedVersion: 2
         x: 1280
@@ -622,7 +622,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -635,7 +635,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_25
+      name: Guy_F_Punch2
       rect:
         serializedVersion: 2
         x: 1280
@@ -643,7 +643,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -656,7 +656,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_26
+      name: Guy_F_Punch3
       rect:
         serializedVersion: 2
         x: 1280
@@ -664,7 +664,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -677,7 +677,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_27
+      name: Guy_F_Punch4
       rect:
         serializedVersion: 2
         x: 1280
@@ -685,7 +685,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -698,7 +698,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_28
+      name: Guy_F_Punch5
       rect:
         serializedVersion: 2
         x: 1280
@@ -706,7 +706,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -719,7 +719,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_29
+      name: Guy_F_Punch6
       rect:
         serializedVersion: 2
         x: 1280
@@ -727,7 +727,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -740,7 +740,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_30
+      name: Guy_F_Punch7
       rect:
         serializedVersion: 2
         x: 1280
@@ -748,7 +748,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -761,7 +761,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guy_31
+      name: Guy_F_Punch8
       rect:
         serializedVersion: 2
         x: 1280
@@ -769,7 +769,7 @@ TextureImporter:
         width: 160
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -792,38 +792,38 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Guy_0: -2032360004
-      Guy_1: -22276792
-      Guy_10: -1229325407
-      Guy_11: 597948551
-      Guy_12: 613793285
-      Guy_13: -1657384546
-      Guy_14: 446538875
-      Guy_15: 1351561858
-      Guy_16: -362170017
-      Guy_17: -1975282133
-      Guy_18: 783277814
-      Guy_19: 1545755588
-      Guy_2: -1506864191
-      Guy_20: -105891119
-      Guy_21: -1903671172
-      Guy_22: 1156772046
-      Guy_23: 174410401
-      Guy_24: 564247209
-      Guy_25: -833762277
-      Guy_26: -451659400
-      Guy_27: -1269009693
-      Guy_28: -1411751551
-      Guy_29: -1392555446
-      Guy_3: -1548655329
-      Guy_30: 758854561
-      Guy_31: 765140705
-      Guy_4: 438132246
-      Guy_5: 978478308
-      Guy_6: 16110319
-      Guy_7: -737252216
-      Guy_8: 811098875
-      Guy_9: 1599406586
+      GUY_B_Idle: 978478308
+      GUY_F_Idle: -2032360004
+      GUY_L_Idle: 1351561858
+      GUY_R_Idle: -1229325407
+      Guy_B_Punch1: 174410401
+      Guy_B_Walk1: 16110319
+      Guy_B_Walk2: -737252216
+      Guy_B_Walk3: 811098875
+      Guy_B_Walk4: 1599406586
+      Guy_F_Punch1: 564247209
+      Guy_F_Punch2: -833762277
+      Guy_F_Punch3: -451659400
+      Guy_F_Punch4: -1269009693
+      Guy_F_Punch5: -1411751551
+      Guy_F_Punch6: -1392555446
+      Guy_F_Punch7: 758854561
+      Guy_F_Punch8: 765140705
+      Guy_F_Walk1: -22276792
+      Guy_F_Walk2: -1506864191
+      Guy_F_Walk3: -1548655329
+      Guy_F_Walk4: 438132246
+      Guy_L_Punch1: -1903671172
+      Guy_L_Walk1: -362170017
+      Guy_L_Walk2: -1975282133
+      Guy_L_Walk3: 783277814
+      Guy_L_Walk4: 1545755588
+      Guy_R_Punch1: 1156772046
+      Guy_R_Walk1: 597948551
+      Guy_R_Walk2: 613793285
+      Guy_R_Walk3: -1657384546
+      Guy_R_Walk4: 446538875
+      Guy_Shadow: -105891119
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
