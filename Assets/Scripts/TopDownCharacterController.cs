@@ -7,41 +7,41 @@ namespace Cainos.PixelArtTopDown_Basic
     public class TopDownCharacterController : MonoBehaviour
     {
         public float speed;
-        public Transform FrontAttackTransform; // Reference to the F Attack transform
+        public Transform FrontAttackTransform;
+        public Transform LeftAttackTransform;
+        public Transform RightAttackTransform;
+        public Transform BackAttackTransform;
         public Vector2 attackSize = new Vector2(1f, 1f);
-
         private Animator animator;
         private SpriteRenderer spriteRenderer;
-
         private int comboIndex = 0;
         private float comboTimer = 0f;
         private float comboTimeWindow = 1f;
         private float cooldownTimer = 0f;
         private float cooldownTime = 1.0f;
-
         private bool isAttacking = false;
         private GameObject parentEntity;
-        private string[] comboTriggers = { "AM Player F Punch1", "AM Player F Punch2", "AM Player F Punch1" };
+        private string[] comboTriggers = { "AM Player Punch1", "AM Player Punch2", "AM Player Punch1" };
 
         private void Start()
         {
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             parentEntity = gameObject;
-            SetAttackSize(attackSize);
+            SetAttackSize(FrontAttackTransform, attackSize);
+            SetAttackSize(LeftAttackTransform, attackSize);
+            SetAttackSize(RightAttackTransform, attackSize);
+            SetAttackSize(BackAttackTransform, attackSize);
         }
         private void OnDrawGizmos()
         {
-            if (FrontAttackTransform != null)
-            {
-                // Draw a wireframe cube representing the attack area
-                Gizmos.color = Color.red; // Set color to red for visibility
-                Gizmos.DrawWireCube(FrontAttackTransform.position, FrontAttackTransform.localScale);
-            }
+            DrawAttackGizmo(FrontAttackTransform);
+            DrawAttackGizmo(LeftAttackTransform);
+            DrawAttackGizmo(RightAttackTransform);
+            DrawAttackGizmo(BackAttackTransform);
         }
         private void Update()
         {
-            // Handle movement input
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
 
@@ -54,7 +54,6 @@ namespace Cainos.PixelArtTopDown_Basic
             animator.SetFloat("Speed", currentSpeed);
             GetComponent<Rigidbody2D>().velocity = direction * speed;
 
-            // Set direction for animation
             if (horizontal > 0) { setDirection("R"); }
             else if (horizontal < 0) { setDirection("L"); }
             if (vertical > 0) { setDirection("B"); }
@@ -80,13 +79,12 @@ namespace Cainos.PixelArtTopDown_Basic
             animator.SetBool("L", false);
             animator.SetBool("B", false);
             animator.SetBool("F", false);
-
             animator.SetBool(direction, true);
         }
 
         private void HandlePunchInput()
         {
-            if (cooldownTimer > 0 || isAttacking == true) return;
+            if (cooldownTimer > 0 || isAttacking) return;
 
             if (comboIndex == 0 || (comboIndex > 0 && comboTimer > 0))
             {
@@ -117,49 +115,57 @@ namespace Cainos.PixelArtTopDown_Basic
         public void EndAttack()
         {
             isAttacking = false;
-
-
         }
 
 
         public void StartAttack()
         {
-
-
             CheckForDamage();
         }
-
         private void CheckForDamage()
         {
-            // Get all colliders within the attackTransform's bounds
-            Collider2D[] colliders = Physics2D.OverlapBoxAll(FrontAttackTransform.position, FrontAttackTransform.localScale, 0);
+            Transform attackTransform = GetCurrentAttackTransform();
+            if (attackTransform == null) return;
 
+            Collider2D[] colliders = Physics2D.OverlapBoxAll(attackTransform.position, attackTransform.localScale, 0);
             foreach (Collider2D collider in colliders)
             {
-                // Check if the collider has a Health component
                 Health health = collider.GetComponent<Health>();
-
-                // Check if the collider is on the same layer and is not the parent entity
                 if (health != null && LayerMask.LayerToName(collider.gameObject.layer) == LayerMask.LayerToName(gameObject.layer))
                 {
-
                     if (collider.transform.root != parentEntity.transform)
                     {
-
-                        health.TakeDamage(10); 
+                        health.TakeDamage(10);
                     }
                 }
             }
         }
-        private void SetAttackSize(Vector2 size)
+        private Transform GetCurrentAttackTransform()
         {
+            if (animator.GetBool("F")) return FrontAttackTransform;
+            if (animator.GetBool("L")) return LeftAttackTransform;
+            if (animator.GetBool("R")) return RightAttackTransform;
+            if (animator.GetBool("B")) return BackAttackTransform;
+            return null;
+        }
+        private void SetAttackSize(Transform attackTransform, Vector2 size)
+        {
+            if (attackTransform == null) return;
 
-            var collider = FrontAttackTransform.GetComponent<BoxCollider2D>();
+            var collider = attackTransform.GetComponent<BoxCollider2D>();
             if (collider == null)
             {
-                collider = FrontAttackTransform.gameObject.AddComponent<BoxCollider2D>();
+                collider = attackTransform.gameObject.AddComponent<BoxCollider2D>();
             }
             collider.size = size;
+        }
+        private void DrawAttackGizmo(Transform attackTransform)
+        {
+            if (attackTransform != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireCube(attackTransform.position, attackTransform.localScale);
+            }
         }
     }
 }
