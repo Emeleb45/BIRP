@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using Cainos.PixelArtTopDown_Basic;
 public class Health : MonoBehaviour
 {
     public int health = 100;
     public float flashDuration = 0.1f;
 
     private SpriteRenderer spriteRenderer;
+
     private Color originalColor;
 
     private void Start()
@@ -36,7 +38,20 @@ public class Health : MonoBehaviour
             spriteRenderer.color = Color.red;
             spriteRenderer.sortingOrder = 1;
         }
+        Transform shadowTransform = transform.Find("Shadow");
+        if (shadowTransform != null)
+        {
+            shadowTransform.gameObject.SetActive(false);
+        }
 
+        var movementScripts = GetComponents<MonoBehaviour>();
+        foreach (var script in movementScripts)
+        {
+            if (script is TopDownCharacterController)
+            {
+                script.enabled = false;
+            }
+        }
         Collider2D[] colliders = GetComponents<Collider2D>();
         foreach (var collider in colliders)
         {
@@ -51,7 +66,7 @@ public class Health : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, -90);
 
-        Destroy(gameObject, 15f); 
+        Destroy(gameObject, 15f);
     }
     private IEnumerator FlashRed()
     {
