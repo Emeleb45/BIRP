@@ -1,86 +1,103 @@
 using UnityEngine;
 using System.Collections;
-using Cainos.PixelArtTopDown_Basic;
-public class Health : MonoBehaviour
+
+namespace Cainos.PixelArtTopDown_Basic
 {
-    public int health = 100;
-    public float flashDuration = 0.1f;
-
-    private SpriteRenderer spriteRenderer;
-
-    private Color originalColor;
-
-    private void Start()
+    public class Health : MonoBehaviour
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            originalColor = spriteRenderer.color;
-        }
-    }
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-        else
-        {
-            StartCoroutine(FlashRed());
-        }
-    }
+        public int health = 100;
+        public float flashDuration = 0.1f;
 
-    private void Die()
-    {
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = Color.red;
-            spriteRenderer.sortingOrder = 1;
-        }
-        Transform shadowTransform = transform.Find("Shadow");
-        if (shadowTransform != null)
-        {
-            shadowTransform.gameObject.SetActive(false);
-        }
+        private SpriteRenderer spriteRenderer;
+        private Color originalColor;
 
-        var movementScripts = GetComponents<MonoBehaviour>();
-        foreach (var script in movementScripts)
+        private void Start()
         {
-            if (script is TopDownCharacterController)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
             {
-                script.enabled = false;
+                originalColor = spriteRenderer.color;
             }
         }
-        Collider2D[] colliders = GetComponents<Collider2D>();
-        foreach (var collider in colliders)
+
+
+        public int GetCurrentHealth()
         {
-            Destroy(collider);
+            return health;
         }
 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
+        public void TakeDamage(int damage)
         {
-            Destroy(rb);
+            health -= damage;
+            if (health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                StartCoroutine(FlashRed());
+            }
         }
 
-        transform.rotation = Quaternion.Euler(0, 0, -90);
-
-        Destroy(gameObject, 15f);
-    }
-    private IEnumerator FlashRed()
-    {
-
-        if (spriteRenderer != null)
+        private void Die()
         {
-            spriteRenderer.color = Color.red;
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = Color.red;
+                spriteRenderer.sortingOrder = 1;
+            }
+            Transform shadowTransform = transform.Find("Shadow");
+            if (shadowTransform != null)
+            {
+                shadowTransform.gameObject.SetActive(false);
+            }
+
+            var movementScripts = GetComponents<MonoBehaviour>();
+            foreach (var script in movementScripts)
+            {
+                if (script is TopDownCharacterController || script is EnemyScript)
+                {
+                    script.enabled = false;
+                }
+            }
+            Animator animator = GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetFloat("Horizontal", 0f);
+                animator.SetFloat("Vertical", 0f);
+                animator.SetFloat("Speed", 0f);
+                animator.SetTrigger("Die");
+            }
+            Collider2D[] colliders = GetComponents<Collider2D>();
+            foreach (var collider in colliders)
+            {
+                Destroy(collider);
+            }
+
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Destroy(rb);
+            }
+
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+
+            Destroy(gameObject, 15f);
         }
 
-        yield return new WaitForSeconds(flashDuration);
-
-        if (spriteRenderer != null)
+        private IEnumerator FlashRed()
         {
-            spriteRenderer.color = originalColor;
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = Color.red;
+            }
+
+            yield return new WaitForSeconds(flashDuration);
+
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = originalColor;
+            }
         }
     }
 }
