@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace Cainos.PixelArtTopDown_Basic
 {
-    public class EnemyScript : MonoBehaviour
+    public class EnemyScript : MonoBehaviour, IHittable
     {
+        public int health = 100;
+        public float flashDuration = 0.1f;
+        private Color originalColor;
         public float speed;
         public float chaseRange = 5.0f;
         public float attackRange = 1.0f;
@@ -17,7 +20,7 @@ namespace Cainos.PixelArtTopDown_Basic
         private Animator animator;
         private SpriteRenderer spriteRenderer;
         private Transform player;
-        private Health playerHealth;
+        private TopDownCharacterController playerControler;
         private int comboIndex = 0;
         private float comboTimer = 0f;
         private float comboTimeWindow = 1f;
@@ -31,13 +34,17 @@ namespace Cainos.PixelArtTopDown_Basic
         {
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                originalColor = spriteRenderer.color;
+            }
             parentEntity = gameObject;
 
 
             player = GameObject.FindGameObjectWithTag("Player").transform;
             if (player != null)
             {
-                playerHealth = player.GetComponent<Health>();
+                playerControler = player.GetComponent<TopDownCharacterController>();
             }
 
             SetAttackSize(FrontAttackTransform, attackSize);
@@ -48,12 +55,12 @@ namespace Cainos.PixelArtTopDown_Basic
 
         private void Update()
         {
-            if (player == null || playerHealth == null) return;
+            if (player == null || playerControler == null) return;
 
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
 
-            if (playerHealth.GetCurrentHealth() <= 0)
+            if (playerControler.GetCurrentHealth() <= 0)
             {
 
                 StopMovement();
@@ -169,18 +176,18 @@ namespace Cainos.PixelArtTopDown_Basic
             Collider2D[] colliders = Physics2D.OverlapBoxAll(attackTransform.position, attackTransform.localScale, 0);
             foreach (Collider2D collider in colliders)
             {
-   
                 if (collider.CompareTag("Player"))
                 {
-                    Health health = collider.GetComponent<Health>();
-                    if (health != null)
+                    IHittable hittable = collider.GetComponent<IHittable>();
+                    if (hittable != null && LayerMask.LayerToName(collider.gameObject.layer) == LayerMask.LayerToName(gameObject.layer))
                     {
-                
-                        health.TakeDamage(10);
+                        hittable.TakeDamage(10);
                     }
                 }
             }
         }
+
+
 
         private Transform GetCurrentAttackTransform()
         {
@@ -226,6 +233,85 @@ namespace Cainos.PixelArtTopDown_Basic
             if (rb != null)
             {
                 rb.velocity = Vector2.zero;
+            }
+        }
+        public int GetCurrentHealth()
+        {
+            return health;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            health -= damage;
+            if (health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                StartCoroutine(FlashRed());
+            }
+        }
+
+        private void Die()
+        {
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = Color.red;
+                spriteRenderer.sortingOrder = 1;
+            }
+            Transform shadowTransform = transform.Find("Shadow");
+            if (shadowTransform != null)
+            {
+                shadowTransform.gameObject.SetActive(false);
+            }
+
+            var movementScripts = GetComponents<MonoBehaviour>();
+            foreach (var script in movementScripts)
+            {
+                if (script is TopDownCharacterController || script is EnemyScript)
+                {
+                    script.enabled = false;
+                }
+            }
+            Animator animator = GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetFloat("Horizontal", 0f);
+                animator.SetFloat("Vertical", 0f);
+                animator.SetFloat("Speed", 0f);
+                animator.SetBool("isBlocking", false);
+                animator.SetTrigger("Die");
+            }
+            Collider2D[] colliders = GetComponents<Collider2D>();
+            foreach (var collider in colliders)
+            {
+                Destroy(collider);
+            }
+
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Destroy(rb);
+            }
+
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+
+            Destroy(gameObject, 15f);
+        }
+
+        private IEnumerator FlashRed()
+        {
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = Color.red;
+            }
+
+            yield return new WaitForSeconds(flashDuration);
+
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = originalColor;
             }
         }
     }

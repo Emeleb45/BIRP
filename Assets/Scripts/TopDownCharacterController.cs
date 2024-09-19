@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace Cainos.PixelArtTopDown_Basic
 {
-    public class TopDownCharacterController : MonoBehaviour
+    public class TopDownCharacterController : MonoBehaviour, IHittable
     {
         public float speed;
         public Transform FrontAttackTransform;
+        public float blockCooldown = 1f; 
         public Transform LeftAttackTransform;
         public Transform RightAttackTransform;
         public Transform BackAttackTransform;
@@ -20,13 +21,25 @@ namespace Cainos.PixelArtTopDown_Basic
         private float cooldownTimer = 0f;
         private float cooldownTime = 1.0f;
         private bool isAttacking = false;
+        private bool isBlocking = false;
         private GameObject parentEntity;
         private string[] comboTriggers = { "AM Player Punch1", "AM Player Punch2", "AM Player Punch1" };
+        public int health = 100;
+        public float flashDuration = 0.1f;
+
+
+        private Color originalColor;
 
         private void Start()
         {
+
+
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                originalColor = spriteRenderer.color;
+            }
             parentEntity = gameObject;
             SetAttackSize(FrontAttackTransform, attackSize);
             SetAttackSize(LeftAttackTransform, attackSize);
@@ -47,12 +60,18 @@ namespace Cainos.PixelArtTopDown_Basic
 
             animator.SetFloat("Horizontal", horizontal);
             animator.SetFloat("Vertical", vertical);
+            if (!isBlocking)
+            {
+                Vector2 direction = new Vector2(horizontal, vertical).normalized;
+                float currentSpeed = direction.magnitude * speed;
 
-            Vector2 direction = new Vector2(horizontal, vertical).normalized;
-            float currentSpeed = direction.magnitude * speed;
+                animator.SetFloat("Speed", currentSpeed);
+                GetComponent<Rigidbody2D>().velocity = direction * speed;
 
-            animator.SetFloat("Speed", currentSpeed);
-            GetComponent<Rigidbody2D>().velocity = direction * speed;
+
+            }
+
+
 
             if (horizontal > 0) { setDirection("R"); }
             else if (horizontal < 0) { setDirection("L"); }
@@ -64,7 +83,19 @@ namespace Cainos.PixelArtTopDown_Basic
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                HandlePunchInput();
+                if (!isBlocking)
+                {
+                    HandlePunchInput();
+                }
+
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                StartBlockInput();
+            }
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                EndBlockInput();
             }
 
             if (comboTimer <= 0 && comboIndex > 0)
@@ -99,6 +130,16 @@ namespace Cainos.PixelArtTopDown_Basic
                 }
             }
         }
+        private void StartBlockInput()
+        {
+            isBlocking = true;
+            animator.SetBool("isBlocking", true);
+        }
+        private void EndBlockInput()
+        {
+            isBlocking = false;
+            animator.SetBool("isBlocking", false);
+        }
 
         private void ResetCombo()
         {
@@ -130,16 +171,17 @@ namespace Cainos.PixelArtTopDown_Basic
             Collider2D[] colliders = Physics2D.OverlapBoxAll(attackTransform.position, attackTransform.localScale, 0);
             foreach (Collider2D collider in colliders)
             {
-                Health health = collider.GetComponent<Health>();
-                if (health != null && LayerMask.LayerToName(collider.gameObject.layer) == LayerMask.LayerToName(gameObject.layer))
+                IHittable hittable = collider.GetComponent<IHittable>();
+                if (hittable != null && LayerMask.LayerToName(collider.gameObject.layer) == LayerMask.LayerToName(gameObject.layer))
                 {
                     if (collider.transform.root != parentEntity.transform)
                     {
-                        health.TakeDamage(10);
+                        hittable.TakeDamage(10);
                     }
                 }
             }
         }
+
         private Transform GetCurrentAttackTransform()
         {
             if (animator.GetBool("F")) return FrontAttackTransform;
@@ -165,6 +207,95 @@ namespace Cainos.PixelArtTopDown_Basic
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawWireCube(attackTransform.position, attackTransform.localScale);
+            }
+        }
+        public int GetCurrentHealth()
+        {
+            return health;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            if (!isBlocking)
+            {
+                health -= damage;
+                if (health <= 0)
+                {
+                    Die();
+                }
+                else
+                {
+                    StartCoroutine(FlashColor(1f, 0f, 0f, 1f));
+                }
+            }
+            else
+            {
+                StartCoroutine(FlashColor(0f, 0f, 1f, 1f));
+            }
+
+        }
+
+        private void Die()
+        {
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = Color.red;
+                spriteRenderer.sortingOrder = 1;
+            }
+            Transform shadowTransform = transform.Find("Shadow");
+            if (shadowTransform != null)
+            {
+                shadowTransform.gameObject.SetActive(false);
+            }
+
+            var movementScripts = GetComponents<MonoBehaviour>();
+            foreach (var script in movementScripts)
+            {
+                if (script is TopDownCharacterController || script is EnemyScript)
+                {
+                    script.enabled = false;
+                }
+            }
+            Animator animator = GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetFloat("Horizontal", 0f);
+                animator.SetFloat("Vertical", 0f);
+                animator.SetFloat("Speed", 0f);
+                animator.SetBool("isBlocking", false);
+                animator.SetTrigger("Die");
+            }
+            Collider2D[] colliders = GetComponents<Collider2D>();
+            foreach (var collider in colliders)
+            {
+                Destroy(collider);
+            }
+
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Destroy(rb);
+            }
+
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+
+            Destroy(gameObject, 15f);
+        }
+
+        private IEnumerator FlashColor(float red, float green, float blue, float alpha)
+        {
+            if (spriteRenderer != null)
+            {
+
+                spriteRenderer.color = new Color(red, green, blue, alpha);
+            }
+
+            yield return new WaitForSeconds(flashDuration);
+
+            if (spriteRenderer != null)
+            {
+
+                spriteRenderer.color = originalColor;
             }
         }
     }

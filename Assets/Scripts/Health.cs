@@ -66,6 +66,7 @@ namespace Cainos.PixelArtTopDown_Basic
                 animator.SetFloat("Horizontal", 0f);
                 animator.SetFloat("Vertical", 0f);
                 animator.SetFloat("Speed", 0f);
+                animator.SetBool("isBlocking", false);
                 animator.SetTrigger("Die");
             }
             Collider2D[] colliders = GetComponents<Collider2D>();

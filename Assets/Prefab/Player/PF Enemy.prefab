@@ -328,7 +328,6 @@ GameObject:
   - component: {fileID: 5628018141983903116}
   - component: {fileID: 5628018141983903117}
   - component: {fileID: 4616719885696106401}
-  - component: {fileID: 8524005337516239150}
   - component: {fileID: 1756615610619405047}
   m_Layer: 21
   m_Name: PF Enemy
@@ -502,20 +501,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8524005337516239150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5628018141983903104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fc15f82b8e445044ac9bff2ab250f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 50
-  flashDuration: 0.1
 --- !u!114 &1756615610619405047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666ffa3051d2aab4d91a5a4d605db3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  flashDuration: 0.1
   speed: 13
   chaseRange: 5
   attackRange: 0.75
