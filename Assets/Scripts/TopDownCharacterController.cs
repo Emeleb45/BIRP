@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cainos.PixelArtTopDown_Basic
 {
@@ -8,7 +9,7 @@ namespace Cainos.PixelArtTopDown_Basic
     {
         public float speed;
         public Transform FrontAttackTransform;
-        public float blockCooldown = 1f; 
+        public float blockCooldown = 1f;
         public Transform LeftAttackTransform;
         public Transform RightAttackTransform;
         public Transform BackAttackTransform;
@@ -26,7 +27,7 @@ namespace Cainos.PixelArtTopDown_Basic
         private string[] comboTriggers = { "AM Player Punch1", "AM Player Punch2", "AM Player Punch1" };
         public int health = 100;
         public float flashDuration = 0.1f;
-
+        public GameObject HealthBar;
 
         private Color originalColor;
 
@@ -219,6 +220,7 @@ namespace Cainos.PixelArtTopDown_Basic
             if (!isBlocking)
             {
                 health -= damage;
+                HealthBar.GetComponent<Image>().fillAmount = health / 100f;
                 if (health <= 0)
                 {
                     Die();

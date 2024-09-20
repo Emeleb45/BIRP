@@ -1,0 +1,92 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Dummy : MonoBehaviour, IHittable
+{
+    public int health = 100;
+    public float flashDuration = 0.1f;
+    private Color originalColor;
+    private SpriteRenderer spriteRenderer;
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
+    }
+    public int GetCurrentHealth()
+    {
+        return health;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            StartCoroutine(FlashRed());
+        }
+    }
+
+    private void Die()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red;
+            spriteRenderer.sortingOrder = 1;
+        }
+        Transform shadowTransform = transform.Find("Shadow");
+        if (shadowTransform != null)
+        {
+            shadowTransform.gameObject.SetActive(false);
+        }
+
+        var movementScripts = GetComponents<MonoBehaviour>();
+
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetFloat("Horizontal", 0f);
+            animator.SetFloat("Vertical", 0f);
+            animator.SetFloat("Speed", 0f);
+            animator.SetBool("isBlocking", false);
+            animator.SetTrigger("Die");
+        }
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (var collider in colliders)
+        {
+            Destroy(collider);
+        }
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            Destroy(rb);
+        }
+
+        transform.rotation = Quaternion.Euler(0, 0, -90);
+
+        Destroy(gameObject, 15f);
+    }
+
+    private IEnumerator FlashRed()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red;
+        }
+
+        yield return new WaitForSeconds(flashDuration);
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = originalColor;
+        }
+    }
+}
