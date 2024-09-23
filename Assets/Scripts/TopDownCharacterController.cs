@@ -84,10 +84,11 @@ namespace Cainos.PixelArtTopDown_Basic
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (!isBlocking)
+                if (isBlocking == true)
                 {
                     HandlePunchInput();
                 }
+
 
             }
             if (Input.GetKeyDown(KeyCode.Q))
