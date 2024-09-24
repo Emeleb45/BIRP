@@ -16519,6 +16519,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 14147949}
   dialogueText: {fileID: 1048222538}
+  choices:
+  - {fileID: 1878394441}
+  - {fileID: 1878394440}
+  - {fileID: 1878394439}
 --- !u!1 &1326796681
 GameObject:
   m_ObjectHideFlags: 0
@@ -18221,7 +18225,7 @@ PrefabInstance:
     - target: {fileID: 7158864123961274544, guid: f22f6afb4d4d1f7468d6eb99451f0006,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8145080267744366257, guid: f22f6afb4d4d1f7468d6eb99451f0006,
         type: 3}
@@ -18238,6 +18242,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f22f6afb4d4d1f7468d6eb99451f0006, type: 3}
+--- !u!1 &1878394439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4415711750835743997, guid: f22f6afb4d4d1f7468d6eb99451f0006,
+    type: 3}
+  m_PrefabInstance: {fileID: 1878394438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1878394440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3067229463346597622, guid: f22f6afb4d4d1f7468d6eb99451f0006,
+    type: 3}
+  m_PrefabInstance: {fileID: 1878394438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1878394441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7501082759381939870, guid: f22f6afb4d4d1f7468d6eb99451f0006,
+    type: 3}
+  m_PrefabInstance: {fileID: 1878394438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1939960211
 GameObject:
   m_ObjectHideFlags: 0
