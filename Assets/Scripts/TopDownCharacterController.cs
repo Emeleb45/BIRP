@@ -63,6 +63,11 @@ namespace Cainos.PixelArtTopDown_Basic
             animator.SetFloat("Vertical", vertical);
             if (!isBlocking)
             {
+                if (DialogueManager.GetInstance().DialogueIsPlaying)
+                {
+                    animator.SetFloat("Speed", 0);
+                    return;
+                }
                 Vector2 direction = new Vector2(horizontal, vertical).normalized;
                 float currentSpeed = direction.magnitude * speed;
 
@@ -84,7 +89,7 @@ namespace Cainos.PixelArtTopDown_Basic
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (isBlocking == true)
+                if (isBlocking == false)
                 {
                     HandlePunchInput();
                 }
@@ -93,9 +98,13 @@ namespace Cainos.PixelArtTopDown_Basic
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                StartBlockInput();
+                if (isAttacking == false)
+                {
+                    StartBlockInput();
+                }
+
             }
-            if (Input.GetKeyUp(KeyCode.Q))
+            if (Input.GetKeyUp(KeyCode.Q) && isBlocking == true)
             {
                 EndBlockInput();
             }
@@ -220,6 +229,10 @@ namespace Cainos.PixelArtTopDown_Basic
         {
             if (!isBlocking)
             {
+                if (DialogueManager.GetInstance().DialogueIsPlaying)
+                {
+                    return;
+                }
                 health -= damage;
                 HealthBar.GetComponent<Image>().fillAmount = health / 100f;
                 if (health <= 0)
